@@ -75,6 +75,9 @@ alias h='heroku'
 alias hc='heroku run console -a '
 alias f='foreman'
 
+# Tests
+alias sspec='git ls-files spec | selecta | xargs rspec'
+
 # Some services
 alias mem="memcached -d"
 alias post="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"

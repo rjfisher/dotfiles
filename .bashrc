@@ -34,9 +34,6 @@ alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -al'
 
-# Use hub: http://github.com/defunkt/hub
-alias git=hub
-
 # git shortcut with useful default. When used with arguments, simply pass
 # along to `git` as normal. With no arguments, show the working tree status.
 # Usage:

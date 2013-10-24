@@ -6,6 +6,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 alias rr="rbenv rehash"
 
+# https://github.com/mxcl/homebrew/issues/14527
+export PGHOST=localhost
+
 # Add bundler binstubs and per-project scripts _after_ rbenv. If added before,
 # the gem's bin in rbenv will have preference over binstubs.
 export PATH="./vendor/bundle/bin:./bin:./script:$PATH"

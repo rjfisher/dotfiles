@@ -90,6 +90,8 @@ alias h='heroku'
 alias hc='heroku run console -a '
 alias f='foreman'
 
+alias pt='papertrail'
+
 # Tests
 alias sspec='git ls-files spec | selecta | xargs rspec'
 
@@ -99,7 +101,7 @@ alias post="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.
 alias post_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 # Remove the generated _site directory and start the Jekyll server.
-alias jek="rm -rf _site && bundle exec jekyll --auto --server"
+alias jek="rm -rf _site && LC_ALL=en_US.UTF-8 bundle exec jekyll serve --watch --safe --drafts"
 alias jekbg="jek 1>/dev/null 2>/dev/null &"
 
 # QuickLook an image

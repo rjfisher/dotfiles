@@ -1,5 +1,5 @@
 # Homebrew
-export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:/usr/local/share/npm/bin:$PATH
+export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -9,9 +9,14 @@ alias rr="rbenv rehash"
 # https://github.com/mxcl/homebrew/issues/14527
 export PGHOST=localhost
 
-# Add bundler binstubs and per-project scripts _after_ rbenv. If added before,
-# the gem's bin in rbenv will have preference over binstubs.
-export PATH="./vendor/bundle/bin:./bin:./script:$PATH"
+# Don't remember why I used ./bin. Commenting for now.
+#export PATH="./bin:$PATH"
+
+# Add ./script and bundler binstubs to the PATH but only if they've been
+# greenlighted: mkdir .git/this-is-okay-for-the-path
+# NOTE: Add _after_ rbenv. If added before, rbenv will have preference.
+export PATH="./.git/this-is-okay-for-the-path/../../vendor/bundle/bin:$PATH"
+export PATH="./.git/this-is-okay-for-the-path/../../script:$PATH"
 
 export DISPLAY=:0.0
 export EDITOR="vim"

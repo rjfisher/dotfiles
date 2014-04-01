@@ -39,6 +39,15 @@ alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -al'
 
+# Serve the current directory. Defaults to port 9090.
+# Usage:
+#   $ serve
+#   $ serve 1234
+function serve {
+  port="${1:-9090}"
+  ruby -run -e httpd . -p $port
+}
+
 # git shortcut with useful default. When used with arguments, simply pass
 # along to `git` as normal. With no arguments, show the working tree status.
 # Usage:

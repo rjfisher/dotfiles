@@ -66,6 +66,25 @@ function proj {
   cd $(find ~/Sites ~/Code -maxdepth 2 -type d | selecta)
 }
 
+# Run multiple ruby test scripts at once.
+# Usage:
+#   $ rbtest one_test.rb two_test.rb ...
+function rbtest {
+  ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require "./#{f}" }' $@
+}
+
+# Run multiple ruby test scripts at once using `rbtest` and be notified on
+# completion.
+# Usage:
+#   $ ntest one_test.rb two_test.rb ...
+function ntest {
+  if rbtest "$@"; then
+    osascript -e 'display notification "(•̀ᴗ•́)و ̑̑" with title "Win" sound name "Purr"'
+  else
+    osascript -e 'display notification "(ಥ﹏ಥ)" with title "Fail" sound name "Basso"'
+  fi
+}
+
 # git workflow aliases
 alias push='git push'
 alias pull='git pull'

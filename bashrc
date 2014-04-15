@@ -61,6 +61,11 @@ function g {
   fi
 }
 
+# Jump to a project using selecta
+function proj {
+  cd $(find ~/Sites ~/Code -maxdepth 2 -type d | selecta)
+}
+
 # git workflow aliases
 alias push='git push'
 alias pull='git pull'

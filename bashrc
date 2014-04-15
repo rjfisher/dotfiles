@@ -66,11 +66,19 @@ function proj {
   cd $(find ~/Sites ~/Code -maxdepth 2 -type d | selecta)
 }
 
-# Run multiple ruby test scripts at once.
+# Run multiple ruby test scripts at once. Without arguments, use selecta to
+# pick a file from test/ and spec/
 # Usage:
 #   $ rbtest one_test.rb two_test.rb ...
 function rbtest {
-  ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require "./#{f}" }' $@
+  if [[ $# > 0 ]]; then
+    echo "ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require \"./#{f}\" }' \"$@\""
+    ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require "./#{f}" }' "$@"
+  else
+    rbtest $((git ls-files test/ spec/; git ls-files --other --exclude-standard test/ spec/) |
+      grep .rb$ |
+      selecta)
+  fi
 }
 
 # Run multiple ruby test scripts at once using `rbtest` and be notified on

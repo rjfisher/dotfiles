@@ -75,10 +75,14 @@ function rbtest {
     echo "ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require \"./#{f}\" }' \"$@\""
     ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require "./#{f}" }' "$@"
   else
-    rbtest $((git ls-files test{,/**}/*.rb spec{,/**}/*.rb;
-              git ls-files --other --exclude-standard test{,/**}/*.rb spec{,/**}/*.rb) |
+    local RBTEST=$(
+      (cat ~/.rbtest 2>/dev/null;
+       git ls-files test{,/**}/*.rb spec{,/**}/*.rb;
+       git ls-files --other --exclude-standard test{,/**}/*.rb spec{,/**}/*.rb) |
       grep .rb$ |
       selecta)
+    echo $RBTEST > ~/.rbtest
+    rbtest $RBTEST
   fi
 }
 

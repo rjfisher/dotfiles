@@ -62,7 +62,7 @@ function g {
 }
 
 # Jump to a project using selecta
-function proj {
+function prj {
   cd $(find ~/Sites ~/Code -maxdepth 2 -type d | selecta)
 }
 

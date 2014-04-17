@@ -69,7 +69,7 @@ function prj {
 # Run multiple ruby test scripts at once. Without arguments, use selecta to
 # pick a file from test/ and spec/
 # Usage:
-#   $ rbtest one_test.rb two_test.rb ...
+#   $ rbtest one_test.rb two_test.rb red_test.rb blue_test.rb ...
 function rbtest {
   if [[ $# > 0 ]]; then
     echo "ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require \"./#{f}\" }' \"$@\""

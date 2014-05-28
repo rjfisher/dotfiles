@@ -52,6 +52,14 @@ function serve {
   ruby -run -e httpd . -p $port
 }
 
+function pt-stage {
+  if [[ $# > 0 ]]; then
+    cap staging deploy -s branch=$1
+  else
+    cap staging deploy
+  fi
+}
+
 # git shortcut with useful default. When used with arguments, simply pass
 # along to `git` as normal. With no arguments, show the working tree status.
 # Usage:

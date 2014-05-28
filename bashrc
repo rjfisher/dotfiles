@@ -79,7 +79,7 @@ function prj {
 }
 
 function vs {
-  vim `(git ls-files --cached --other --exclude-standard | sort | uniq) | selecta`
+  vim `git ls-files --cached --other --exclude-standard | selecta`
 }
 
 # Run multiple ruby test scripts at once. Without arguments, use selecta to

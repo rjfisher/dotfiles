@@ -93,8 +93,7 @@ function rbtest {
   else
     local RBTEST=$(
       (cat ~/.rbtest 2>/dev/null;
-       git ls-files test{,/**}/*.rb spec{,/**}/*.rb;
-       git ls-files --other --exclude-standard test{,/**}/*.rb spec{,/**}/*.rb) |
+       git ls-files --cached --other --exclude-standard test spec) |
       grep .rb$ |
       selecta)
     echo $RBTEST > ~/.rbtest

@@ -9,20 +9,24 @@ alias rr="rbenv rehash"
 # https://github.com/mxcl/homebrew/issues/14527
 export PGHOST=localhost
 
-# Don't remember why I used ./bin. Commenting for now.
-#export PATH="./bin:$PATH"
-
 # Add ./script and bundler binstubs to the PATH but only if they've been
 # greenlighted: mkdir .git/this-is-okay-for-the-path
 # NOTE: Add _after_ rbenv. If added before, rbenv will have preference.
 export PATH="./.git/this-is-okay-for-the-path/../../vendor/bundle/bin:$PATH"
 export PATH="./.git/this-is-okay-for-the-path/../../script:$PATH"
 
+export GOPATH=$HOME/.go/
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.cabal/bin
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home
+
 export DISPLAY=:0.0
 export EDITOR="vim"
 export VISUAL="vim"
 export GEM_EDITOR="vim"
-export CC=/usr/local/bin/gcc-4.2
+# No idea why this is here.
+# export CC=/usr/local/bin/gcc-4.2
 
 # Colors ----------------------------------------------------------
 export TERM=xterm-256color

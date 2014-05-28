@@ -78,6 +78,10 @@ function prj {
   cd $(find ~/Sites ~/Code -maxdepth 2 -type d | selecta)
 }
 
+function vs {
+  vim `(git ls-files --cached --other --exclude-standard | sort | uniq) | selecta`
+}
+
 # Run multiple ruby test scripts at once. Without arguments, use selecta to
 # pick a file from test/ and spec/
 # Usage:

@@ -1,13 +1,9 @@
 # Homebrew
-export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 alias rr="rbenv rehash"
-
-# https://github.com/mxcl/homebrew/issues/14527
-export PGHOST=localhost
 
 # Add ./script and bundler binstubs to the PATH but only if they've been
 # greenlighted: mkdir .git/this-is-okay-for-the-path
@@ -18,6 +14,12 @@ export PATH="./.git/this-is-okay-for-the-path/../../script:$PATH"
 export GOPATH=$HOME/.go/
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.cabal/bin
+
+# Add my scripts to the front of PATH
+export PATH=$HOME/.bin:$PATH
+
+# https://github.com/mxcl/homebrew/issues/14527
+export PGHOST=localhost
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home
 

@@ -94,6 +94,7 @@ function ids {
 # Run multiple ruby test scripts at once. Arguments will be passed through to
 # the `script/exec` command if it exists. Use selecta to pick a file from
 # test/ and spec/ if called with no arguments.
+#
 # Usage:
 #   $ rbtest one_test.rb two_test.rb red_test.rb blue_test.rb ...
 function rbtest {
@@ -118,6 +119,7 @@ function rbtest {
 
 # Run multiple ruby test scripts at once using `rbtest` and be notified on
 # completion.
+#
 # Usage:
 #   $ ntest one_test.rb two_test.rb ...
 function ntest {

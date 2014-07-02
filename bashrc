@@ -128,6 +128,7 @@ function ntest {
   fi
 }
 
+alias alert="osascript -e 'display notification \"ᕕ( ᐛ )ᕗ\" with title \"Done!\" sound name \"Ping\"'"
 
 # Quickly commit a dependency bump to git.
 # Usage:

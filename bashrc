@@ -128,11 +128,6 @@ function ntest {
   fi
 }
 
-# git workflow aliases
-alias push='git push'
-alias pull='git pull'
-alias fetch='git fetch --all --prune'
-alias churn='git --no-pager log --name-only | grep -F .rb | sort | uniq -c | sort -nr | head'
 
 # Quickly commit a dependency bump to git.
 # Usage:

@@ -91,14 +91,19 @@ function ids {
   idris `ls *.idr | selecta`
 }
 
-# Run multiple ruby test scripts at once. Without arguments, use selecta to
-# pick a file from test/ and spec/
+# Run multiple ruby test scripts at once. Arguments will be passed through to
+# the `script/exec` command if it exists. Use selecta to pick a file from
+# test/ and spec/ if called with no arguments.
 # Usage:
 #   $ rbtest one_test.rb two_test.rb red_test.rb blue_test.rb ...
 function rbtest {
   if [[ $# > 0 ]]; then
-    echo "ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require \"./#{f}\" }' \"$@\""
-    ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require "./#{f}" }' "$@"
+    if command -v script/exec >/dev/null 2>&1; then
+      script/exec "$@"
+    else
+      echo "ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require \"./#{f}\" }' \"$@\"\n"
+      ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require "./#{f}" }' "$@"
+    fi
   else
     local RBTEST=$(
       (cat ~/.rbtest 2>/dev/null;
@@ -106,6 +111,7 @@ function rbtest {
       grep .rb$ |
       selecta)
     echo $RBTEST > ~/.rbtest
+    echo
     rbtest $RBTEST
   fi
 }

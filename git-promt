@@ -1,5 +1,5 @@
 function current_git_branch {
-  command git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print "",$NF'}
+  command git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'}
 }
 
 CYAN='\033[0;36m'
@@ -21,4 +21,4 @@ function git_status_color {
 }
 
 # Set the prompt to "~/Sites/monkeys master $ "
-PS1="\w\[\$(git_status_color)\]\$(current_git_branch)\[$RESET\] \$ "
+PS1="\w\[\$(git_status_color)\] \$(current_git_branch)\[$RESET\] \$ "

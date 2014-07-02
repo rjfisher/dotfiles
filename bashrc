@@ -54,12 +54,15 @@ function serve {
   ruby -run -e httpd . -p $port
 }
 
+alias pt-prod="cap production deploy"
+
+# Deploy to staging. Defaults to the current branch.
+# Usage:
+#   $ pt-stage
+#   $ pt-stage my-test-branch
 function pt-stage {
-  if [[ $# > 0 ]]; then
-    cap staging deploy -s branch=$1
-  else
-    cap staging deploy
-  fi
+  branch="${1:-`current_git_branch`}"
+  cap staging deploy -s branch=$branch
 }
 
 # git shortcut with useful default. When used with arguments, simply pass

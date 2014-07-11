@@ -1,9 +1,12 @@
 #!/bin/sh
 
-ORIG_WINDOW_INDEX=`tmux display-message -p '#I'`
-ORIG_PANE_INDEX=`tmux display-message -p '#P'`
+tests_window="tests"
 
-tmux select-window -t tests
-tmux send-keys "time ntest $*" C-m
-tmux select-window -t $ORIG_WINDOW_INDEX
-tmux select-pane -t $ORIG_PANE_INDEX
+# Create a tests window if it doesn't exist
+if !(tmux list-windows -F "#W" | grep $tests_window 1>/dev/null); then
+  tmux new-window -dn $tests_window
+  tmux set-window-option -qt $tests_window monitor-activity off
+fi
+
+# Run the test command in the tests window
+tmux send-keys -t $tests_window "time ntest $*" C-m

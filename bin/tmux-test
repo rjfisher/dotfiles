@@ -1,0 +1,9 @@
+#!/bin/sh
+
+ORIG_WINDOW_INDEX=`tmux display-message -p '#I'`
+ORIG_PANE_INDEX=`tmux display-message -p '#P'`
+
+tmux select-window -t tests
+tmux send-keys "time ntest $*" C-m
+tmux select-window -t $ORIG_WINDOW_INDEX
+tmux select-pane -t $ORIG_PANE_INDEX

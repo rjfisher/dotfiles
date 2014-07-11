@@ -87,6 +87,10 @@ function vs {
   vim `git ls-files --cached --other --exclude-standard | selecta`
 }
 
+function gvs {
+  vim `git status --porcelain --short | cut -c 2- | grep -e M -e ? -e U | cut -c 3- | selecta`
+}
+
 function ids {
   idris `ls *.idr | selecta`
 }

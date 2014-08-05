@@ -65,6 +65,15 @@ function pt-stage {
   cap staging deploy -s branch=$branch
 }
 
+# Deploy to staging and run migrations. Defaults to the current branch.
+# Usage:
+#   $ pt-stage-mig
+#   $ pt-stage-mig my-test-branch
+function pt-stage-mig {
+  branch="${1:-`current_git_branch`}"
+  cap staging deploy:migrations -s branch=$branch
+}
+
 # git shortcut with useful default. When used with arguments, simply pass
 # along to `git` as normal. With no arguments, show the working tree status.
 # Usage:

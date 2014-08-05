@@ -1,0 +1,50 @@
+## os x
+.DS_Store
+
+## tools
+*.swp
+*.swo
+.agignore
+.vimrc
+.vim/
+
+## ruby
+.bundle
+.env
+.sass-cache
+pkg/
+vendor/bundle
+vendor/bin
+.rspec
+.ruby-version
+todo.md
+
+## mac
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+profile
+*.moved-aside
+DerivedData
+.idea/
+*.hmap
+*.xccheckout
+Pods
+
+## leiningen
+pom.xml
+*jar
+# /lib/ ## this isn't really compatible with ruby
+/classes/
+/target/
+.lein-deps-sum
+.lein-repl-history
+.lein-plugins/

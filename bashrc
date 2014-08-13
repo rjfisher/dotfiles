@@ -148,9 +148,13 @@ alias alert="osascript -e 'display notification \"ᕕ( ᐛ )ᕗ\" with title \"D
 # Quickly commit a dependency bump to git.
 # Usage:
 #   $ bump rails
-bump()
-{
-  git commit -m "Bump $@ dependency"
+#   $ bump rails 2.3.1
+function bump {
+  if [[ $2 ]]; then
+    git commit -m "Bump $1 dependency to $2"
+  else
+    git commit -m "Bump $1 dependency"
+  fi
 }
 
 # Rails

@@ -105,10 +105,6 @@ function gvs {
   vim `git status --porcelain --short | cut -c 2- | grep -e M -e ? -e U | cut -c 3- | selecta`
 }
 
-function ids {
-  idris `ls *.idr | selecta`
-}
-
 # Run multiple ruby test scripts at once. Arguments will be passed through to
 # the `script/exec` command if it exists. Use selecta to pick a file from
 # test/ and spec/ if called with no arguments.

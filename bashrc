@@ -93,7 +93,12 @@ function prj {
 }
 
 function vs {
-  vim `git ls-files --cached --other --exclude-standard | selecta`
+  local VS=$(
+    (cat .vs-last 2>/dev/null;
+     git ls-files --cached --other --exclude-standard) |
+    selecta)
+  echo $VS > .vs-last
+  vim $VS
 }
 
 function gvs {

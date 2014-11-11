@@ -45,6 +45,9 @@ alias ls='ls -G'
 alias ll='ls -l'
 alias la='ls -al'
 
+# search
+alias au='ag --unrestricted'
+
 # Serve the current directory. Defaults to port 9090.
 # Usage:
 #   $ serve

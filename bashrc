@@ -54,7 +54,14 @@ function serve {
   ruby -run -e httpd . -p $port
 }
 
-alias pt-prod="cap production deploy"
+# Deploy to production Defaults to the current branch.
+# Usage:
+#   $ pt-ship
+#   $ pt-ship my-test-branch
+function pt-ship {
+  branch="${1:-`current_git_branch`}"
+  cap production deploy -s branch=$branch
+}
 
 # Deploy to staging. Defaults to the current branch.
 # Usage:
@@ -63,6 +70,15 @@ alias pt-prod="cap production deploy"
 function pt-stage {
   branch="${1:-`current_git_branch`}"
   cap staging deploy -s branch=$branch
+}
+
+# Deploy to production and run migrations. Defaults to the current branch.
+# Usage:
+#   $ pt-ship-mig
+#   $ pt-ship-mig my-test-branch
+function pt-ship-mig {
+  branch="${1:-`current_git_branch`}"
+  cap production deploy:migrations -s branch=$branch
 }
 
 # Deploy to staging and run migrations. Defaults to the current branch.

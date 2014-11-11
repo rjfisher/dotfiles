@@ -49,3 +49,6 @@ pom.xml
 .lein-repl-history
 .lein-plugins/
 .vs-last
+
+## idris
+*.ibc

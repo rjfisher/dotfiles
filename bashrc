@@ -163,7 +163,8 @@ function ntest {
   fi
 }
 
-alias alert="osascript -e 'display notification \"ᕕ( ᐛ )ᕗ\" with title \"Done!\" sound name \"Ping\"'"
+alias ding="osascript -e 'display notification \"ᕕ( ᐛ )ᕗ\" with title \"Done!\" sound name \"Ping\"'"
+alias alert="while true; do ding; sleep 3; done"
 
 # Quickly commit a dependency bump to git.
 # Usage:

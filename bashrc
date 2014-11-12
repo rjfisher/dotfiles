@@ -192,8 +192,6 @@ alias h='heroku'
 alias hc='heroku run console -a '
 alias f='foreman'
 
-alias pt='papertrail'
-
 # Tests
 alias sspec='git ls-files spec | selecta | xargs rspec'
 

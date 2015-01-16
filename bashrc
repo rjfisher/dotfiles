@@ -187,7 +187,10 @@ alias b='bundle'
 alias be='bundle exec'
 alias bi='bundle install --standalone'
 alias bu='bundle update'
-alias bo='bundle open'
+
+function bo {
+  bundle open `bundle show | tail -n +2 | cut -d " " -f 4 | selecta`
+}
 
 # Heroku
 alias h='heroku'

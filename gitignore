@@ -53,3 +53,29 @@ pom.xml
 
 ## idris
 *.ibc
+
+## haskell
+dist
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+.virtualenv
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.config
+*.prof
+*.aux
+*.hp
+
+## node
+node_modules
+bower_components
+
+## purescript
+.psci

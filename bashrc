@@ -14,7 +14,10 @@ export PATH="./.git/this-is-okay-for-the-path/../../script:$PATH"
 
 export GOPATH=$HOME/.go/
 export PATH=$PATH:$GOPATH/bin
+
+# GHC.app
 export PATH=$PATH:$HOME/.cabal/bin
+export PATH=$PATH:$HOME/Applications/ghc-7.8.3.app/Contents/bin
 
 # Add my scripts to the front of PATH
 export PATH=$HOME/.bin:$PATH

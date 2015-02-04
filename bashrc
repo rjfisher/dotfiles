@@ -37,7 +37,7 @@ export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 
 # Use vim-like keybindings
-set -o vi
+# set -o vi
 
 alias C="clear"
 

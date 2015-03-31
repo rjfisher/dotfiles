@@ -55,6 +55,9 @@ alias aa='ag --all-types'
 # find a pid by process name
 alias pid="ps axww -o pid,%cpu,%mem,time,command | tail -n +2 | selecta | sed 's/^ *//' | cut -f1 -d' '"
 
+alias ding="osascript -e 'display notification \"ᕕ( ᐛ )ᕗ\" with title \"Done!\" sound name \"Ping\"'"
+alias alert="while true; do ding; sleep 3; done"
+
 
 # Serve the current directory. Defaults to port 9090.
 # Usage:
@@ -71,7 +74,7 @@ function serve {
 #   $ pt-ship my-test-branch
 function pt-ship {
   branch="${1:-`current_git_branch`}"
-  cap production deploy -s branch=$branch
+  cap production deploy -s branch=$branch ; alert
 }
 
 # Deploy to staging. Defaults to the current branch.
@@ -80,7 +83,7 @@ function pt-ship {
 #   $ pt-stage my-test-branch
 function pt-stage {
   branch="${1:-`current_git_branch`}"
-  cap staging deploy -s branch=$branch
+  cap staging deploy -s branch=$branch ; alert
 }
 
 # Deploy to production and run migrations. Defaults to the current branch.
@@ -89,7 +92,7 @@ function pt-stage {
 #   $ pt-ship-mig my-test-branch
 function pt-ship-mig {
   branch="${1:-`current_git_branch`}"
-  cap production deploy:migrations -s branch=$branch
+  cap production deploy:migrations -s branch=$branch ; alert
 }
 
 # Deploy to staging and run migrations. Defaults to the current branch.
@@ -98,7 +101,7 @@ function pt-ship-mig {
 #   $ pt-stage-mig my-test-branch
 function pt-stage-mig {
   branch="${1:-`current_git_branch`}"
-  cap staging deploy:migrations -s branch=$branch
+  cap staging deploy:migrations -s branch=$branch ; alert
 }
 
 # git shortcut with useful default. When used with arguments, simply pass
@@ -170,9 +173,6 @@ function ntest {
     osascript -e 'display notification "(ಥ﹏ಥ)" with title "Fail" sound name "Basso"'
   fi
 }
-
-alias ding="osascript -e 'display notification \"ᕕ( ᐛ )ᕗ\" with title \"Done!\" sound name \"Ping\"'"
-alias alert="while true; do ding; sleep 3; done"
 
 # Quickly commit a dependency bump to git.
 # Usage:

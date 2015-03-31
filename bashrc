@@ -52,6 +52,10 @@ alias la='ls -al'
 # search
 alias aa='ag --all-types'
 
+# find a pid by process name
+alias pid="ps axww -o pid,%cpu,%mem,time,command | tail -n +2 | selecta | sed 's/^ *//' | cut -f1 -d' '"
+
+
 # Serve the current directory. Defaults to port 9090.
 # Usage:
 #   $ serve

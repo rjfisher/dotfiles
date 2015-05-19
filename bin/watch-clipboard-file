@@ -1,0 +1,7 @@
+#!/bin/sh
+
+fswatch -o -0 ~/Dropbox/Elements/Notational\ Data/Clipboard.txt | while read -d "";
+do
+  cat ~/Dropbox/Elements/Notational\ Data/Clipboard.txt | pbcopy
+  osascript -e "display notification \"ᕕ( ᐛ )ᕗ\" with title \"Copied!\" sound name \"Ping\""
+done

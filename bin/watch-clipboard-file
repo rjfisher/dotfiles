@@ -1,7 +1,18 @@
 #!/bin/sh
+set -e
 
-fswatch -o -0 ~/Dropbox/Elements/Notational\ Data/Clipboard.txt | while read -d "";
+FSWATCH=`which fswatch`
+if [ -z ${FSWATCH} ]; then
+  echo "Install fswatch: https://github.com/emcrisostomo/fswatch" >&2
+  exit 1
+fi
+
+FILE="/users/Larry/Dropbox/Elements/Notational Data/Clipboard.txt"
+${FSWATCH} -o -0 "$FILE" | while read -d ""
 do
-  pbcopy < ~/Dropbox/Elements/Notational\ Data/Clipboard.txt
-  osascript -e "display notification \"ᕕ( ᐛ )ᕗ\" with title \"Copied!\" sound name \"Ping\""
+  if [ -s "$FILE" ]; then
+    cat "$FILE" | xargs echo -n | pbcopy
+    osascript -e "display notification \"ᕕ( ᐛ )ᕗ\" with title \"Copied!\" sound name \"Ping\""
+    > "$FILE"
+  fi
 done

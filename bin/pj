@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+response = $stdin.read.split("\r\n\r\n")
+headers  = response[0...-1]
+data     = response[-1]
+
+puts
+puts headers
+puts
+puts begin
+       JSON.pretty_generate(JSON.parse(data))
+     rescue JSON::ParserError
+       data
+     end

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Pomodoro timer
+
+osascript -e 'display notification "💰💸" with title "GO" sound name "Hero"'
+
+# sleep 1500
+sleep 1200
+osascript -e 'display notification "🎉🎈🎋🎊" with title "STOP" sound name "Ping"'
+# echo 'STOP'
+
+# sleep 300
+# osascript -e 'display notification "📢📵📈" with title "Play time is OVER!" sound name "Basso"'
+# # echo 'Play time is OVER!'

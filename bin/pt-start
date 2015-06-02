@@ -1,0 +1,19 @@
+#!/bin/sh
+
+mysql.server start
+
+echo
+echo Starting Zookeeper
+bundle exec rake zookeeper:start
+
+echo
+echo Starting Redis
+bundle exec rake redis:start
+
+echo
+echo Starting Passenger Standalone
+sudo passenger start \
+  --daemonize \
+  --port 80 \
+  --environment development \
+  --user Larry

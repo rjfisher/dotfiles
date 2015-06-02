@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Usage: t [<tmux-session>]
+#
+# Attch to or create a new tmux session with the given name. With no
+# arguments, use the name of the working directory as the session name.
+#
+# Requirements:
+# - tmux
+
+set -e
+
+if [ -z "$1" ]; then
+  SESSION="${PWD##*/}"
+else
+  SESSION="$1"
+fi
+
+if (tmux has-session -t "$SESSION" >/dev/null 2>&1); then
+  tmux attach -t "$SESSION"
+else
+  tmux new-session -s "$SESSION"
+fi
+
+
+#!/usr/bin/env bash
+# Usage: t [<tmux-session>]
+#
+# With no arguments, attach to the last tmux session. Start a new, unnamed
+# session if tmux is sessionless. With one or more arguments, attach to the
+# tmux session with the name of the first argument. Create a new session with
+# that name if none are found. All remaining arguments are forwarded to
+# `tmux`.
+#
+# Example:
+#   t                  => tmux
+#   t                  => tmux attach
+#   t new-session      => tmux new -s new-session
+#   t existing-session => tmux attach -t existing-session
+#
+# Requirements:
+# - tmux
+# if [[ $# > 0 ]]; then
+#   tmux list-sessions 2>/dev/null | grep "^$1:" 1>/dev/null
+#   if [[ $? > 0 ]]; then
+#     tmux new -s "$@"
+#   else
+#     tmux attach -t "$@"
+#   fi
+# else
+#   tmux list-sessions 2>/dev/null 1>&2
+#   if [[ $? > 0 ]]; then
+#     tmux
+#   else
+#     tmux attach
+#   fi
+# fi

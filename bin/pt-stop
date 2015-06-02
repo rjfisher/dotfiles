@@ -1,0 +1,15 @@
+#!/bin/sh
+
+mysql.server stop
+
+echo
+echo Stopping Zookeeper
+bundle exec rake zookeeper:stop
+
+echo
+echo Stopping Redis
+redis-cli shutdown
+
+echo
+echo Stopping Passenger Standalone
+sudo passenger stop --port 80

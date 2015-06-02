@@ -10,6 +10,7 @@ alias rr="rbenv rehash"
 # NOTE: Add _after_ rbenv. If added before, rbenv will have preference.
 export PATH="./.git/this-is-okay-for-the-path/../../vendor/bundle/bin:$PATH"
 export PATH="./.git/this-is-okay-for-the-path/../../.bin:$PATH"
+export PATH="./.git/this-is-okay-for-the-path/../../bin:$PATH"
 export PATH="./.git/this-is-okay-for-the-path/../../script:$PATH"
 
 export GOPATH=$HOME/.go/

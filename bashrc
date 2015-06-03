@@ -26,8 +26,6 @@ export PATH=$HOME/.bin:$PATH
 # https://github.com/mxcl/homebrew/issues/14527
 export PGHOST=localhost
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Home
-
 export DISPLAY=:0.0
 export EDITOR="vim"
 export VISUAL="vim"

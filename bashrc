@@ -1,3 +1,5 @@
+ulimit -n 8192
+
 # Homebrew
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 

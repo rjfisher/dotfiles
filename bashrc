@@ -120,7 +120,7 @@ function g {
 
 # Jump to a project using selecta
 function prj {
-  cd $(find ~/Sites ~/Code -maxdepth 2 -type d | selecta)
+  cd $(find ~/Code -maxdepth 1 -type d | selecta)
 }
 
 function vs {

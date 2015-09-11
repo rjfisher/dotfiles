@@ -8,7 +8,7 @@ bundle exec rake zookeeper:start
 
 echo
 echo Starting Redis
-bundle exec rake redis:start
+bundle exec spring rake redis:start
 
 echo
 echo Starting Passenger Standalone

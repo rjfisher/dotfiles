@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+echo "rake db:migrate"
+bundle exec rake db:migrate
+
+if [ "$1" == "test" ]; then
+  echo "\nrake db:migrate:redo"
+  bundle exec rake db:migrate:redo
+fi
+
+echo "\nrake db:test:prepare"
+bundle exec rake db:test:prepare
+

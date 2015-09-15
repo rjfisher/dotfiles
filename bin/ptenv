@@ -20,7 +20,7 @@ start()
     --daemonize \
     --port 80 \
     --environment development \
-    --user Larry
+    --user $(whoami)
 }
 
 stop()

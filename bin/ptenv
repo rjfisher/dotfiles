@@ -33,15 +33,17 @@ stop()
 
   echo
   echo Stopping Redis
-  redis-cli shutdown
+  redis-cli shutdown || true
 
   echo
   echo Stopping Passenger Standalone
-  sudo passenger stop --port 80
+  sudo passenger stop --port 80 || true
 }
 
 if [ "$1" == "restart" ]; then
   stop
+  echo
+  echo
   start
 elif [ "$1" == "stop" ]; then
   stop

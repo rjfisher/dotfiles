@@ -144,7 +144,9 @@ function gvs {
 #   $ rbtest one_test.rb two_test.rb red_test.rb blue_test.rb ...
 function rbtest {
   if [[ $# > 0 ]]; then
-    if command -v script/exec >/dev/null 2>&1; then
+    if command -v spring >/dev/null 2>&1; then
+      spring testunit "$@"
+    elif command -v script/exec >/dev/null 2>&1; then
       script/exec "$@"
     else
       echo "ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require \"./#{f}\" }' \"$@\"\n"

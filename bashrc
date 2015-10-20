@@ -20,7 +20,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # GHC.app
 export PATH=$PATH:$HOME/.cabal/bin
-export PATH=$PATH:/opt/homebrew-cask/Caskroom/ghc/7.10.1-r0/ghc-7.10.1.app/Contents/bin
+export PATH=$PATH:/opt/homebrew-cask/Caskroom/ghc/7.10.2-r0/ghc-7.10.2.app/Contents/bin
 
 # Add my scripts to the front of PATH
 export PATH=$HOME/.bin:$PATH

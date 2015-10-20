@@ -1,3 +1,4 @@
 ---
 BUNDLE_BIN: vendor/bundle/bin
 BUNDLE_PATH: vendor/bundle
+BUNDLE_BUILD__EVENTMACHINE: --with-cppflags=-I/usr/local/opt/openssl/include

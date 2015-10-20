@@ -233,6 +233,9 @@ source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
 # Homebrew completion
 source /usr/local/Library/Contributions/brew_bash_completion.sh
 
+# Authenticate homebrew github requests
+source ~/.homebrew_api_token
+
 # Allow <C-s> to pass through to applications (vim, reverse search through
 # history, etc) instead of stopping output.
 stty -ixon -ixoff

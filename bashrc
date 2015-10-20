@@ -147,8 +147,10 @@ function gvs {
 function rbtest {
   if [[ $# > 0 ]]; then
     if command -v spring >/dev/null 2>&1; then
+      echo "spring testunit \"$@\""
       spring testunit "$@"
     elif command -v script/exec >/dev/null 2>&1; then
+      echo "script/exec \"$@\""
       script/exec "$@"
     else
       echo "ruby -Ivendor/bundle -Itest -Ilib -e 'ARGV.each {|f| require \"./#{f}\" }' \"$@\"\n"

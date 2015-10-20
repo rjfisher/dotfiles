@@ -40,6 +40,8 @@ export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+
 # Use vim-like keybindings
 # set -o vi
 

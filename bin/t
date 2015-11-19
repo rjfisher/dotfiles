@@ -2,8 +2,9 @@
 #
 # Usage: t [<tmux-session-name>]
 #
-# Attch to or create a new tmux session with the given name. With no
-# arguments, use the name of the working directory as the session name.
+# Attch to or create a new tmux session with the given name. With no arguments,
+# use the name of the working directory as the session name. Also bootstraps
+# `spring` if available.
 #
 # Examples:
 #
@@ -13,6 +14,8 @@
 # Requirements:
 #
 #   - tmux
+#   - spring (optional)
+#   - reattach-to-user-namespace (if using spring)
 
 set -e
 
@@ -22,8 +25,13 @@ else
   SESSION="$1"
 fi
 
-if (tmux has-session -t "$SESSION" >/dev/null 2>&1); then
-  tmux attach -t "$SESSION"
-else
-  tmux new-session -s "$SESSION"
+if !(tmux has-session -t "$SESSION" >/dev/null 2>&1); then
+  tmux new-session -s "$SESSION" -d
+
+  if (command -v spring >/dev/null 2>&1); then
+    tmux run-shell -t "$SESSION" 'reattach-to-user-namespace spring rake environment >/dev/null 2>&1 &'
+  fi
+
 fi
+
+tmux attach-session -t "$SESSION"

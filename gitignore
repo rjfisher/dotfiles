@@ -40,7 +40,6 @@ DerivedData
 Pods
 
 ## leiningen
-pom.xml
 *jar
 # /lib/ ## this isn't really compatible with ruby
 /classes/
@@ -78,3 +77,10 @@ bower_components
 
 ## purescript
 .psci
+
+
+## java
+*.class
+target/
+.idea/*
+*.iml

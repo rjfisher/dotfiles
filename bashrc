@@ -199,8 +199,8 @@ alias r='rails'
 # Bundler
 alias b='bundle'
 alias be='bundle exec'
-alias bi='bundle install --standalone'
-alias bu='bundle update'
+alias bi='bundle install --standalone --jobs=3'
+alias bu='bundle update --jobs=3'
 
 function bo {
   bundle open `bundle show | tail -n +2 | cut -d " " -f 4 | selecta`

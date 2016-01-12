@@ -40,7 +40,7 @@ export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # Use vim-like keybindings
 # set -o vi
@@ -61,6 +61,19 @@ alias pid="ps axww -o pid,%cpu,%mem,time,command | tail -n +2 | selecta | sed 's
 alias ding="osascript -e 'display notification \"ᕕ( ᐛ )ᕗ\" with title \"Done!\" sound name \"Ping\"'"
 alias alert="while true; do ding; sleep 3; done"
 
+# Switch JDK versions.
+# Usage:
+#   $ setjdk 1.8
+function setjdk() {
+  if [ $# -ne 0 ]; then
+    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+    if [ -n "${JAVA_HOME+x}" ]; then
+      removeFromPath $JAVA_HOME
+    fi
+    export JAVA_HOME=`/usr/libexec/java_home -v $@`
+    export PATH=$JAVA_HOME/bin:$PATH
+  fi
+}
 
 # Serve the current directory. Defaults to port 9090.
 # Usage:

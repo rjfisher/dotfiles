@@ -8,7 +8,10 @@ eval "$(rbenv init -)"
 alias rr="rbenv rehash"
 
 # Add ./script and bundler binstubs to the PATH but only if they've been
-# greenlighted: mkdir .git/this-is-okay-for-the-path
+# greenlighted:
+#
+#   $ mkdir .git/this-is-okay-for-the-path
+#
 # NOTE: Add _after_ rbenv. If added before, rbenv will have preference.
 export PATH="./.git/this-is-okay-for-the-path/../../vendor/bundle/bin:$PATH"
 export PATH="./.git/this-is-okay-for-the-path/../../.bin:$PATH"

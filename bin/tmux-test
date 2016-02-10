@@ -9,4 +9,4 @@ if !(tmux list-windows -F "#W" | grep $tests_window 1>/dev/null); then
 fi
 
 # Run the test command in the tests window
-tmux send-keys -t $tests_window "time ntest $*" C-m
+tmux send-keys -t $tests_window "$*" C-m
